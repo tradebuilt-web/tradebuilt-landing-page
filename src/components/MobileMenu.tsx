@@ -27,11 +27,11 @@ export function MobileMenu({ pages, pathname }: MobileMenuProps) {
         <button
           type="button"
           aria-label="Open menu"
-          className="p-2 rounded-md active:scale-95"
+          className="p-2 rounded-md active:scale-95 bg-theme_text_light"
         >
           <img
             src={MenuIcon.src ?? MenuIcon}
-            className="h-8 w-8 hover:cursor-pointer pointer-events-none"
+            className="h-8 w-8  hover:cursor-pointer pointer-events-none"
             alt=""
             draggable={false}
           />
