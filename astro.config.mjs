@@ -7,8 +7,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://tradebuilt-web.github.io",
-  base: "/tradebuilt-landing-page/",
+  site: "https://tradebuiltwebdesigns.com/",
   vite: {
     plugins: [tailwindcss()],
   },
