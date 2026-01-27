@@ -12,6 +12,7 @@ export default {
         theme_text_light: `rgb(${colors.text_light} / <alpha-value>)`,
         theme_text_dark: `rgb(${colors.text_dark} / <alpha-value>)`,
         theme_content_bg: `rgb(${colors.content_bg} / <alpha-value>)`,
+        theme_accents: `rgb(${colors.accents} / <alpha-value>)`,
       },
     },
   },

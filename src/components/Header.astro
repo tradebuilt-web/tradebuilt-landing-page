@@ -9,7 +9,9 @@ const cleanPathname = pathname.replace(basePath, "") || "/";
 ---
 
 <header>
-  <div class="bg-theme_header p-4 lg:p-8 flex justify-between items-center">
+  <div
+    class="bg-theme_header p-4 lg:p-8 flex justify-between items-center border-b border-theme_accents"
+  >
     <!-- TODO: MAKE THIS DIV ^ A CONTAINER? -->
     <a href={import.meta.env.BASE_URL} class="flex items-center">
       <span class="font-bold text-2xl lg:text-4xl">{content.company.name}</span>

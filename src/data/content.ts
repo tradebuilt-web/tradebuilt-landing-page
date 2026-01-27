@@ -68,6 +68,7 @@ export const colors = {
   button: "16 22 42",
   button_hover: "22 180 106",
   text_light: "235 235 235",
-  text_dark: "235 235 235",
+  text_dark: "25 25 25",
   content_bg: "10 10 10",
+  accents: "137 207 240",
 };
