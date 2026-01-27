@@ -28,8 +28,8 @@ export function GalleryCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className=" text-theme_text_dark" />
+      <CarouselNext className=" text-theme_text_dark" />
     </Carousel>
   );
 }
