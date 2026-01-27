@@ -53,6 +53,10 @@ export const content = {
       url: "/gallery",
     },
     {
+      title: "Client Form",
+      url: "/client-form",
+    },
+    {
       title: "Contact",
       url: "/contact",
     },

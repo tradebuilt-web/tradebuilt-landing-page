@@ -1,0 +1,134 @@
+<div class="flex flex-col gap-4">
+  <div class="w-24 border-t-2 border-gray-300"></div>
+
+  <div class="text-sm text-slate-500">
+    Please upload a few photos of your business – your logo, examples of your
+    work, or photos of you and your team.
+  </div>
+
+  <!-- Upload label (shown only when no files) -->
+  <label
+    for="attachment"
+    id="upload-label"
+    class="transition border border-slate-300 rounded text-slate-500 inline-block p-4 cursor-pointer hover:bg-slate-100 w-max"
+  >
+    Upload photos
+  </label>
+
+  <input
+    type="file"
+    id="attachment"
+    accept="image/png, image/jpeg, image/webp, image/svg"
+    multiple
+    name="photos"
+    class="hidden"
+  />
+
+  <!-- File list -->
+  <ul id="file-list"></ul>
+
+  <!-- + Add more (only when files exist) -->
+  <button
+    type="button"
+    id="add-more"
+    class="transition hidden w-max border border-slate-300 rounded px-3 py-2 text-lg font-bold text-slate-600 hover:bg-slate-100 hover:cursor-pointer"
+    aria-label="Add more photos"
+  >
+    +
+  </button>
+
+  <div class="w-24 border-t-2 border-gray-300"></div>
+
+  <script>
+    (() => {
+      const input = document.getElementById(
+        "attachment",
+      ) as HTMLInputElement | null;
+      const list = document.getElementById("file-list");
+      const uploadLabel = document.getElementById("upload-label");
+      const addMoreBtn = document.getElementById("add-more");
+
+      if (!input || !list || !uploadLabel || !addMoreBtn) return;
+
+      let selectedFiles: File[] = [];
+
+      // On form submit, update the input files
+      const form = input.closest("form");
+      form?.addEventListener("submit", () => {
+        const dt = new DataTransfer();
+        selectedFiles.forEach((file) => dt.items.add(file));
+        input.files = dt.files;
+      });
+
+      function updateUI() {
+        const hasFiles = selectedFiles.length > 0;
+        if (!uploadLabel || !addMoreBtn) return;
+        uploadLabel.style.display = hasFiles ? "none" : "inline-block";
+        addMoreBtn.style.display = hasFiles ? "inline-block" : "none";
+      }
+
+      function renderFiles() {
+        if (!list) return;
+        list.innerHTML = "";
+
+        selectedFiles.forEach((file, index) => {
+          const li = document.createElement("li");
+          li.className = "file-list-item";
+
+          const remove = document.createElement("button");
+          remove.textContent = "×";
+          remove.setAttribute("aria-label", `Remove ${file.name}`);
+          remove.onclick = () => {
+            selectedFiles.splice(index, 1);
+            renderFiles();
+            updateUI();
+          };
+
+          const name = document.createElement("div");
+          name.textContent = file.name;
+
+          li.appendChild(remove);
+          li.appendChild(name);
+          list.appendChild(li);
+        });
+
+        updateUI();
+      }
+
+      input.addEventListener("change", () => {
+        if (!input.files) return;
+        selectedFiles = [...selectedFiles, ...Array.from(input.files)];
+        input.value = "";
+        renderFiles();
+      });
+
+      addMoreBtn.addEventListener("click", () => {
+        input.click();
+      });
+
+      updateUI();
+    })();
+  </script>
+
+  <style>
+    :global(.file-list-item) {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-top: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    :global(.file-list-item button) {
+      background: none;
+      color: #f87171;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+    }
+  </style>
+</div>

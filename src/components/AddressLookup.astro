@@ -1,0 +1,75 @@
+---
+const { label = "Company Address", country = "us" } = Astro.props;
+---
+
+<fieldset class="space-y-4">
+  <legend class="text-sm font-semibold text-slate-900">
+    {label}
+  </legend>
+
+  <!-- Visible autocomplete input -->
+  <input
+    id="address-autocomplete"
+    type="text"
+    placeholder="Start typing address..."
+    autocomplete="off"
+    class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-slate-900 focus:outline-none"
+  />
+
+  <!-- Hidden structured fields -->
+  <input type="hidden" name="street" />
+  <input type="hidden" name="city" />
+  <input type="hidden" name="state" />
+  <input type="hidden" name="zip" />
+
+  <p class="text-xs text-slate-500">Select your address from the list</p>
+</fieldset>
+
+<!-- Google Places -->
+<!-- TODO: API KEY TO ENV -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbldoUIE9dTB71Cjl92o_K6I8wVHOJGvY&libraries=places"
+  defer></script>
+
+<script>
+  window.addEventListener("load", () => {
+    const input = document.getElementById(
+      "address-autocomplete",
+    ) as HTMLInputElement | null;
+    if (!input || !window.google) return;
+
+    const autocomplete = new google.maps.places.Autocomplete(input, {
+      types: ["address"],
+      componentRestrictions: { country: "us" },
+    });
+
+    autocomplete.addListener("place_changed", () => {
+      const place = autocomplete.getPlace();
+      if (!place.address_components) return;
+
+      const parts: Record<string, string> = {};
+
+      place.address_components.forEach(
+        (c: { long_name: string; short_name: string; types: string[] }) => {
+          parts[c.types[0]] = c.long_name;
+        },
+      );
+
+      const street =
+        document.querySelector<HTMLInputElement>('[name="street"]');
+      if (street) {
+        street.value =
+          `${parts.street_number || ""} ${parts.route || ""}`.trim();
+      }
+
+      const city = document.querySelector<HTMLInputElement>('[name="city"]');
+      if (city) city.value = parts.locality || "";
+
+      const state = document.querySelector<HTMLInputElement>('[name="state"]');
+      if (state) state.value = parts.administrative_area_level_1 || "";
+
+      const zip = document.querySelector<HTMLInputElement>('[name="zip"]');
+      if (zip) zip.value = parts.postal_code || "";
+    });
+  });
+</script>
