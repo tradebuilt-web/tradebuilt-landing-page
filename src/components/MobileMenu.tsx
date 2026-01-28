@@ -15,7 +15,6 @@ type MobileMenuProps = {
   pathname: string;
 };
 
-// TODO: IMPORT PAGES TYPE
 export function MobileMenu({ pages, pathname }: MobileMenuProps) {
   // TODO: refactor pathname
   const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -27,11 +26,11 @@ export function MobileMenu({ pages, pathname }: MobileMenuProps) {
         <button
           type="button"
           aria-label="Open menu"
-          className="p-2 rounded-md active:scale-95 bg-theme_text_light"
+          className="p-2 rounded-md active:scale-95 bg-theme_text_light hover:cursor-pointer select-none outline-none"
         >
           <img
             src={MenuIcon.src ?? MenuIcon}
-            className="h-8 w-8  hover:cursor-pointer pointer-events-none"
+            className="h-8 w-8  hover:cursor-pointer"
             alt=""
             draggable={false}
           />
@@ -45,7 +44,7 @@ export function MobileMenu({ pages, pathname }: MobileMenuProps) {
             return (
               <DropdownMenuItem
                 key={page.title}
-                className="text-2xl hover:cursor-pointer"
+                className="text-2xl hover:cursor-pointer cursor-pointer"
                 asChild
               >
                 <a
