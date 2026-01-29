@@ -7,7 +7,7 @@ import ContactForm from "~/components/ContactForm.astro";
 ---
 
 <Layout pageTitle="Home">
-  <section class="relative min-h-screen flex items-center py-16 lg:py-0 px-4">
+  <section class="relative min-h-screen flex py-8 px-4">
     <Image
       src={houseImageSrc}
       alt="Heading background"
@@ -16,7 +16,7 @@ import ContactForm from "~/components/ContactForm.astro";
     />
 
     <div
-      class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-black/90"
+      class="absolute inset-0 bg-linear-to-b from-black/70 via-black/70 to-black/90"
     >
     </div>
 
@@ -27,14 +27,17 @@ import ContactForm from "~/components/ContactForm.astro";
       >
         <!-- Hero -->
         <div class="max-w-xl">
-          <h1 class="text-4xl font-extrabold leading-tight lg:text-7xl">
+          <h1 class="w-max mx-auto text-xl">
+            Only <span class="font-bold glow mx-2">$1.00/day</span> - for everything!
+          </h1>
+          <h2 class="text-4xl font-extrabold leading-tight lg:text-7xl">
             You serve your customers.
             <span
               class="block mt-2 text-theme_accents italic decoration-theme_accents/60 decoration-4 underline-offset-8"
             >
               We bring them to you.
             </span>
-          </h1>
+          </h2>
 
           <p class="mt-8 text-lg text-gray-200">
             {content.pages[0].subHero}
@@ -53,3 +56,36 @@ import ContactForm from "~/components/ContactForm.astro";
     </div>
   </section>
 </Layout>
+
+<style>
+  .glow {
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes glow {
+    from {
+      text-shadow:
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #005100,
+        0 0 40px #005100,
+        0 0 50px #005100,
+        0 0 60px #005100,
+        0 0 70px #005100;
+    }
+    to {
+      text-shadow:
+        0 0 20px #fff,
+        0 0 30px #007800,
+        0 0 40px #007800,
+        0 0 50px #007800,
+        0 0 60px #007800,
+        0 0 70px #007800,
+        0 0 80px #007800;
+    }
+  }
+</style>
