@@ -11,7 +11,7 @@ export const content = {
   company: {
     name: `TradeBuilt Web`,
     phone: `(505) 482-0999`,
-    email: `luke@sineworks.io`,
+    email: `contact@alpineoasisrentals.com`,
     address: {
       street: `910 N Buena Vis Ave`,
       city: `Farmington`,
