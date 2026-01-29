@@ -13,10 +13,10 @@ export const content = {
     phone: `(505) 482-0999`,
     email: `contact@alpineoasisrentals.com`,
     address: {
-      street: `910 N Buena Vis Ave`,
+      street: ``,
       city: `Farmington`,
       state: `NM`,
-      zip: `87401`,
+      zip: ``,
     },
   },
 
@@ -25,7 +25,7 @@ export const content = {
       title: "Home",
       url: "/",
       hero: "You serve your customers! We bring them to you.",
-      subHero: "Contact us today.",
+      subHero: "Fill out our Contact Form. Be online tomorrow.",
     },
     {
       title: "About",
