@@ -10,6 +10,15 @@ import { content } from "~/data/content";
     <div class="p-6 sm:p-8 text-theme_text_light w-full max-w-3xl mx-auto">
       <h1 class="mb-8 text-4xl lg:text-7xl">Our Services</h1>
       <ul class="text-lg flex flex-col gap-4">
+        <li>
+          <span class="font-bold">Check out an example page: </span><a
+            href="https://waldvogelshandyman.com"
+            class="underline text-theme_accents"
+            target="_blank"
+          >
+            waldvogelshandyman.com</a
+          >
+        </li>
         {
           content.pages[2].servicesContent?.map((service, index) => (
             <li class="border-b border-theme_text_light p-2 ">{service}</li>
