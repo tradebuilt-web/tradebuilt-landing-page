@@ -39,13 +39,12 @@ export const content = {
       title: "Services",
       url: "/services",
       servicesContent: [
-        "100% free website design and domain ownership",
+        "Unlimited minor edits",
+        "Own your own domain — even if you cancel",
         "$45/month or $1.50 per day total cost for everything",
         "6-month starter agreement",
         "Strategically engineered websites designed to increase phone, text, and email traffic",
-        "Unlimited minor edits",
         "SEO optimization to help your business get found on ChatGPT and Google",
-        "Own your own domain — even if you cancel",
       ],
     },
     {
